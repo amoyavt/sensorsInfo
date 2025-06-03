@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" class="dark"> <!-- Added dark class to html for potential global dark mode styling via Tailwind -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensor Module Comparison - Dark Mode</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts Import -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans', sans-serif; /* Default body font */
+        }
+        h1 {
+            font-family: 'Space Grotesk', sans-serif; /* Heading font */
+        }
+        /* Ensuring table cells have a minimum width for better layout */
+        th, td {
+            min-width: 100px; 
+        }
+        /* Custom scrollbar for webkit browsers for better dark mode aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #2d3748; /* Tailwind dark-700 equivalent */
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4a5568; /* Tailwind dark-600 equivalent */
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #718096; /* Tailwind dark-500 equivalent */
+        }
+    </style>
+    <script>
+        // Optional: If you want to allow users to toggle dark mode,
+        // you could add a button and JavaScript to toggle the 'dark' class on the <html> element.
+        // For now, it's set to dark mode by default.
+    </script>
+</head>
+<body class="bg-gray-900 text-gray-200 p-4 sm:p-6 lg:p-8">
+    <div class="container mx-auto max-w-7xl bg-gray-800 shadow-2xl rounded-lg p-6">
+        <h1 class="text-2xl sm:text-3xl font-bold text-white mb-6 text-center">Sensor Module Comparison</h1>
+        
+        <!-- Informational message for mobile users - Dark Mode -->
+        <div class="block md:hidden bg-gray-700 border-l-4 border-blue-400 text-blue-200 p-4 mb-6 rounded-md" role="alert">
+            <p class="font-bold" style="font-family: 'Space Grotesk', sans-serif;">Mobile View</p> <!-- Applied Space Grotesk to alert title for consistency -->
+            <p>This table contains many columns. You may need to scroll horizontally to see all the data.</p>
+        </div>
+
+        <div class="overflow-x-auto rounded-lg shadow-md">
+            <table class="min-w-full divide-y divide-gray-700">
+                <thead class="bg-gray-700">
+                    <tr>
+                        <!-- Table Headers - Dark Mode -->
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Model</th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Interface</th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Protocol</th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Baud Rate</th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Data Format</th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Physical Interface</th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Power Supply</th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">Notes</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-gray-800 divide-y divide-gray-700">
+                    <!-- RK14V (RS485) Row - Dark Mode -->
+                    <tr>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-50">RK14V (RS485)</td>
+                        <td class="px-6 py-4 whitespace-normal text-sm text-gray-300">RS485 (Wired)</td>
+                        <td class="px-6 py-4 whitespace-normal text-sm text-gray-300">Modbus RTU</td>
+                        <td class="px-6 py-4 whitespace-normal text-sm text-gray-300">Default: 9600<br>Options: 4800, 9600, 19200, 57600, 115200</td>
+                        <td class="px-6 py-4 whitespace-normal text-sm text-gray-300">8 data bits, 1 stop bit, no parity</td>
+                        <td class="px-6 py-4 whitespace-normal text-sm text-gray-300">4-wire: Red (VCC), Black (GND), Yellow (A), Green (B) or Red, Black, Yellow, White</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">5V</td>
+                        <td class="px-6 py-4 whitespace-normal text-sm text-gray-300">8-in-1 sensor</td>
+                    </tr>
+                    <!-- RK14V (TTL) Row - Dark Mode -->
+                    <tr>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-50">RK14V (TTL)</td>
+                        <td class="px-6 py-4 whitespace-normal text-sm text-gray-300">UART (TTL Level)</td>
+                        <td class="px-6 py-4 whitespace-normal text-sm text-gray-300">UART (auto output)</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">9600</td>
+                        <td class="px-6 py-4 whitespace-normal text-sm text-gray-300">8 data bits, 1 stop bit, no parity</td>
+                        <td class="px-6 py-4 whitespace-normal text-sm text-gray-300">ZH2.54 female socket (5V, GND, RXD, TXD)</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">5V</td>
+                        <td class="px-6 py-4 whitespace-normal text-sm text-gray-300">7-in-1 sensor; supports optional RS485, RS232, WIFI, Lora, Cat1 interfaces</td>
+                    </tr>
+                    <!-- RK485 Row - Dark Mode -->
+                    <tr>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-50">RK485</td>
+                        <td class="px-6 py-4 whitespace-normal text-sm text-gray-300">RS485 (Wired)</td>
+                        <td class="px-6 py-4 whitespace-normal text-sm text-gray-300">Modbus RTU</td>
+                        <td class="px-6 py-4 whitespace-normal text-sm text-gray-300">Default: 4800<br>Options: 2400, 4800, 9600<br>Supported: up to 115200</td>
+                        <td class="px-6 py-4 whitespace-normal text-sm text-gray-300">8-bit binary, 8 data bits, no parity, CRC check</td>
+                        <td class="px-6 py-4 whitespace-normal text-sm text-gray-300">ZH2.54 female seat (Brown: +V, Black: GND, Yellow: A, Blue: B)</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">10–30V DC</td>
+                        <td class="px-6 py-4 whitespace-normal text-sm text-gray-300">7-in-1 environmental transmitter; uses function code 0x03 for register reading</td>
+                    </tr>
+                    <!-- RK209D Row - Dark Mode -->
+                    <tr>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-50">RK209D</td>
+                        <td class="px-6 py-4 whitespace-normal text-sm text-gray-300">WIFI</td>
+                        <td class="px-6 py-4 whitespace-normal text-sm text-gray-300">TCP/IP, MQTT (JSON)</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">—</td>
+                        <td class="px-6 py-4 whitespace-normal text-sm text-gray-300">JSON format via WIFI</td>
+                        <td class="px-6 py-4 whitespace-normal text-sm text-gray-300">ZH2.54 female socket, TTL level</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">Standard USB for power</td>
+                        <td class="px-6 py-4 whitespace-normal text-sm text-gray-300">9-in-1 with LCD; supports IEEE 802.11b/g/n (2.4GHz)</td>
+                    </tr>
+                    <!-- RK209D-11 Row - Dark Mode -->
+                    <tr>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-50">RK209D-11</td>
+                        <td class="px-6 py-4 whitespace-normal text-sm text-gray-300">WIFI + RS485</td>
+                        <td class="px-6 py-4 whitespace-normal text-sm text-gray-300">WIFI: TCP/IP, MQTT<br>RS485: Modbus RTU</td>
+                        <td class="px-6 py-4 whitespace-normal text-sm text-gray-300">WIFI: —<br>RS485: Default 9600<br>Options: 4800, 9600, 19200, 57600, 115200</td>
+                        <td class="px-6 py-4 whitespace-normal text-sm text-gray-300">8 data bits, 1 stop bit, no parity, CRC check</td>
+                        <td class="px-6 py-4 whitespace-normal text-sm text-gray-300">ZH2.54 female socket (Terminals: B, A, GND, 12V)</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300">DC 12V</td>
+                        <td class="px-6 py-4 whitespace-normal text-sm text-gray-300">11-in-1 transmitter; dual interface with RS485 + WIFI; supports IEEE 802.11b/g/n (2.4GHz)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="text-xs text-gray-400 mt-6 text-center">
+            This table provides a comparative overview of various sensor modules. Data is based on the provided information.
+        </p>
+    </div>
+</body>
+</html>
