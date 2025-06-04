@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RS485 Communication</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Space Grotesk', sans-serif; }
+        th, td { min-width: 80px; }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200 p-4 sm:p-6 lg:p-8">
+    <div class="container mx-auto max-w-3xl bg-gray-800 shadow-2xl rounded-lg p-6">
+        <h1 class="text-2xl sm:text-3xl font-bold text-white mb-6 text-center">RS485 Communication</h1>
+        <h2 class="text-xl font-semibold text-blue-300 mb-4">Request: Query the version number</h2>
+        <div class="overflow-x-auto mb-6">
+            <table class="min-w-full divide-y divide-gray-700 mb-2">
+                <thead class="bg-gray-700">
+                    <tr>
+                        <th class="px-3 py-2 text-xs font-medium text-gray-300 uppercase">address code</th>
+                        <th class="px-3 py-2 text-xs font-medium text-gray-300 uppercase">function code</th>
+                        <th class="px-3 py-2 text-xs font-medium text-gray-300 uppercase">Register address high byte</th>
+                        <th class="px-3 py-2 text-xs font-medium text-gray-300 uppercase">Register address low byte</th>
+                        <th class="px-3 py-2 text-xs font-medium text-gray-300 uppercase">High byte of the number of registers</th>
+                        <th class="px-3 py-2 text-xs font-medium text-gray-300 uppercase">Low byte of register number</th>
+                        <th class="px-3 py-2 text-xs font-medium text-gray-300 uppercase">CRC check</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-gray-800 divide-y divide-gray-700">
+                    <tr>
+                        <td class="px-3 py-2 text-sm text-gray-50">0xXX</td>
+                        <td class="px-3 py-2 text-sm text-gray-200">0x03</td>
+                        <td class="px-3 py-2 text-sm text-gray-200">0x00</td>
+                        <td class="px-3 py-2 text-sm text-gray-200">0x24</td>
+                        <td class="px-3 py-2 text-sm text-gray-200">0x00</td>
+                        <td class="px-3 py-2 text-sm text-gray-200">0x06</td>
+                        <td class="px-3 py-2 text-sm text-gray-200">High byte, low byte</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <h2 class="text-xl font-semibold text-blue-300 mb-4 mt-8">Response</h2>
+        <div class="overflow-x-auto mb-6">
+            <table class="min-w-full divide-y divide-gray-700 mb-2">
+                <thead class="bg-gray-700">
+                    <tr>
+                        <th class="px-3 py-2 text-xs font-medium text-gray-300 uppercase">address code</th>
+                        <th class="px-3 py-2 text-xs font-medium text-gray-300 uppercase">function code</th>
+                        <th class="px-3 py-2 text-xs font-medium text-gray-300 uppercase">Return the number of bytes</th>
+                        <th class="px-3 py-2 text-xs font-medium text-gray-300 uppercase">High byte of valid data</th>
+                        <th class="px-3 py-2 text-xs font-medium text-gray-300 uppercase">CRC check</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-gray-800 divide-y divide-gray-700">
+                    <tr>
+                        <td class="px-3 py-2 text-sm text-gray-50">0xXX</td>
+                        <td class="px-3 py-2 text-sm text-gray-200">0x03</td>
+                        <td class="px-3 py-2 text-sm text-gray-200">0x0C</td>
+                        <td class="px-3 py-2 text-sm text-gray-200">(This machine version number)</td>
+                        <td class="px-3 py-2 text-sm text-gray-200">High byte, low byte</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <h2 class="text-xl font-semibold text-blue-300 mb-4 mt-8">Example</h2>
+        <div class="bg-gray-700 rounded-md p-4 text-sm text-gray-100 mb-2">
+            <div class="mb-2">
+                <span class="font-bold text-blue-200">Send:</span> 01 03 00 24 00 06 85 C3
+            </div>
+            <div>
+                <span class="font-bold text-blue-200">Return:</span> 01 03 0C 32 30 32 30 36 32 38 30 31 30 31 5B 18 28 01<br>
+                <span class="text-gray-400">(2020 06 28 01 01)</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
